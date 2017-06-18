@@ -1,7 +1,9 @@
 import { SIZE } from './constants.js';
+import { STYLES } from './constants.js';
 
 export default class MahjongPaiToHtmlConvertor {
   convert(outputSet, options) {
+    let url = options.hostUrl + STYLES[options.style] + "/";
     let scale = this.getScaleFromOption(options.checkedSizeOption, options.customSize);
     let outputHtml = "";
 
@@ -13,17 +15,17 @@ export default class MahjongPaiToHtmlConvertor {
       } else if (this.isKan(pai)) {
         pai = pai[0].toLowerCase() + pai.substring(1);
         outputHtml += "<div style='display: inline-block; height: " + (60 * scale) + "px'>";
-        outputHtml += "<img style='display: block' src='" + options.hostUrl + pai + ".gif' height='" + (30 * scale) + "px'>";
-        outputHtml += "<img style='display: block' src='" + options.hostUrl + pai + ".gif' height='" + (30 * scale) + "px'>";
+        outputHtml += "<img style='display: block' src='" + url + pai + ".gif' height='" + (30 * scale) + "px'>";
+        outputHtml += "<img style='display: block' src='" + url + pai + ".gif' height='" + (30 * scale) + "px'>";
         outputHtml += "</div>";
       } else if (this.isRotation(pai)) {
         if (pai[0] === "b") {
-          outputHtml += "<img src='" + options.hostUrl + "ura.gif' height='" + (40 * scale) + "px'>";
+          outputHtml += "<img src='" + url + "ura.gif' height='" + (40 * scale) + "px'>";
         } else {
-          outputHtml += "<img src='" + options.hostUrl + pai + ".gif' height='" + (30 * scale) + "px'>";
+          outputHtml += "<img src='" + url + pai + ".gif' height='" + (30 * scale) + "px'>";
         }
       } else {
-        outputHtml += "<img src='" + options.hostUrl + pai + ".gif' height='" + (40 * scale) + "px'>";
+        outputHtml += "<img src='" + url + pai + ".gif' height='" + (40 * scale) + "px'>";
       }
     });
 
@@ -51,13 +53,13 @@ export default class MahjongPaiToHtmlConvertor {
     let standardSize = 40;
     switch(checkedSizeOption) {
       case SIZE.SMALL:
-        size = "25";
+        size = "24";
         break;
       case SIZE.MIDDLE:
-        size = "40";
+        size = "32";
         break;
       case SIZE.BIG:
-        size = "60";
+        size = "40";
         break;
       case SIZE.CUSTOM:
         if (this.isNumber(customSize)) {

@@ -5,7 +5,8 @@ export const SIZE = {
   CUSTOM: "4"
 };
 
-export const DEFAULT_IMG_URL = "https://raw.githubusercontent.com/matsumatsu233/mahjong-pai-converter/master/sources/mj-dragon/";
+export const DEFAULT_IMG_URL = "https://raw.githubusercontent.com/matsumatsu233/mahjong-pai-converter/master/sources/";
+export const STYLES = [ "mj-dragon", "mj-tactics" ];
 
 export const PARSE_RESULT = {
   SUCCESS: 0,

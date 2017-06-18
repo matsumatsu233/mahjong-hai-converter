@@ -11,11 +11,13 @@ let mahjongPaiToHtmlConvertor = new MahjongPaiToHtmlConvertor();
 
 $(document).ready(function(e) {
   $("#convert").click(() => {
+    let style = $("input[name=style]:checked").val();
     let checkedSizeOption = $("input[name=size]:checked").val();
     let customSize = $("#customSize>input").val();
     let hostUrl = DEFAULT_IMG_URL;
 
     let options = {
+      style: style,
       checkedSizeOption: checkedSizeOption,
       customSize: customSize,
       hostUrl: hostUrl
@@ -27,7 +29,7 @@ $(document).ready(function(e) {
 
     if (inputText) {
       let result = mahjongTextParser.parse(inputText);
-      console.log("result", result);
+
       if (result.status === PARSE_RESULT.INVALID_INPUT) {
         $("#inputErrorLabel").css( {"display": "inline-block"});
         setShowArea("");
@@ -46,6 +48,10 @@ $(document).ready(function(e) {
     if (e.which == 13) {
       $("#convert").click();
     }
+  });
+
+  $('input[type=radio][name=style]').change( () => {
+    $("#convert").click();
   });
 
   $('input[type=radio][name=size]').change( () => {
@@ -102,10 +108,11 @@ function readLocalOptions() {
 
   let optionsStr = localStorage.getItem("options");
   let options = JSON.parse(optionsStr);
+  $("input[name=style][value=" + options.style + "]").prop('checked', true);
   $("input[name=size][value=" + options.checkedSizeOption + "]").prop('checked', true);
   $("#customSize>input").val(options.customSize);
 }
 
 function isMjDragon() {
-  return true;
+  return $("input[name=style][value=0]").is(':checked');
 }
