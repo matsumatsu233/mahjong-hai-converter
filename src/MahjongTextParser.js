@@ -150,7 +150,7 @@ export default class MahjongTextParser {
       }
     }
 
-    console.log("outputSet", outputSet);
+    //console.log("outputSet", outputSet);
     // when input text doesn't end with a symbol
     if (prePaiStack.length !== 0) {
       return {
