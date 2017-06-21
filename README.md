@@ -1,5 +1,7 @@
 # mahjong-pai-converter
 
+https://matsumatsu233.github.io/mahjong-pai-converter/index.html
+
 ## 更新履歴
 
 ### v1.0.1
