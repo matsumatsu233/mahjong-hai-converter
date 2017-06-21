@@ -9,15 +9,15 @@ export default class MahjongPaiToHtmlConvertor {
 
     outputSet.forEach((pai) => {
       if (this.isSpace(pai)) {
-        outputHtml += "<div style='width: " + (10 * scale) + "px; display: inline-block;'></div>";// TODO adjust with size
+        outputHtml += "<span style='margin-right:" + (10 * scale) + "px'></span>";
       } else if (this.isSpilter(pai)) {
-        outputHtml += "<div style='width: " + (30 * scale) + "px; display: inline-block;'></div>";// TODO adjust with size
+        outputHtml += "<span style='margin-right:" + (30 * scale) + "px'></span>";
       } else if (this.isKan(pai)) {
         pai = pai[0].toLowerCase() + pai.substring(1);
-        outputHtml += "<div style='display: inline-block; height: " + (60 * scale) + "px'>";
+        outputHtml += "<span style='display: inline-block; height: " + (60 * scale) + "px'>";
         outputHtml += "<img style='display: block' src='" + url + pai + ".gif' height='" + (30 * scale) + "px'>";
         outputHtml += "<img style='display: block' src='" + url + pai + ".gif' height='" + (30 * scale) + "px'>";
-        outputHtml += "</div>";
+        outputHtml += "</span>";
       } else if (this.isRotation(pai)) {
         if (pai[0] === "b") {
           outputHtml += "<img src='" + url + "ura.gif' height='" + (40 * scale) + "px'>";
